@@ -1,6 +1,7 @@
 import pytest
 import requests
 import string
+import json
 from collections import Counter
 from jsonschema import validate
 
@@ -49,3 +50,13 @@ def test_people_schema(people_schema, people_list):
 def test_incredible(what_to_search, search_in_peoples):
     if what_to_search not in ["0", "6", "9"]:
         assert len(search_in_peoples(what_to_search)) > 0
+
+
+def test_wookie_parsed_without_errors():
+    json
+    # status code is 200 implicit check
+
+
+def test_errors_not_for_wookies():
+    json
+    # 404 error message while taking no resource

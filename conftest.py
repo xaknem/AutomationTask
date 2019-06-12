@@ -2,7 +2,10 @@ import pytest
 import json
 import requests
 
-# use endpoint with "people" resource because there is no other tests
+"""
+use endpoint with "people" resource because there is no other tests
+endpoint must be "https://swapi.co/api/"
+"""
 endpoint: str = "https://swapi.co/api/people/"
 
 
