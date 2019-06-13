@@ -6,7 +6,7 @@ import requests
 use endpoint with "people" resource because there is no other tests
 endpoint must be "https://swapi.co/api/"
 """
-endpoint: str = "https://swapi.co/api/people/"
+endpoint = "https://swapi.co/api/people/"
 
 
 @pytest.fixture(scope="module")
@@ -27,7 +27,7 @@ def people_list():
 @pytest.fixture(scope="module")
 def people_schema():
     response = requests.get(endpoint + "schema")
-    return json.loads(response.content)
+    return json.loads(response.content.decode('utf-8'))
 
 
 @pytest.fixture(scope="module")
@@ -46,5 +46,5 @@ def search_in_peoples():
 
 def get_page(url):
     response = requests.get(url)
-    json_content = json.loads(response.content)
+    json_content = json.loads(response.content.decode('utf-8'))
     return json_content
