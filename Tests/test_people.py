@@ -29,11 +29,3 @@ def test_people0_dent_exists():
 def test_people_schema(people_schema, people_list):
     for person in people_list:
         validate(person, people_schema)
-
-# status code is 200 implicit check
-# Проверка того, что все ссылки в ответе рабочие (возвращают ответ 200)
-# при отправке запроса по http перекидывает на https
-# проверка что вуки - это json
-# кейс с именами большие и маленькие буквы.
-# выбрать поля, в которых содержатся ссылки
-#
