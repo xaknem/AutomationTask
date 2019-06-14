@@ -1,18 +1,22 @@
 from conftest import *
 
 
-def test_assumption_keys_encodes(people_list):
+def test_assumption_that_keys_encodes(people_list):
     response = get_page(endpoint + "1" + format_wookiee)
-    assert len(response.values()) == len(people_list[0].values())
-    for x in people_list[0].keys():
+    person = people_list[0]
+    assert len(response.values()) == len(person.values())
+    for x in person.keys():
         assert x not in response.keys()
 
 
-def test_number_values_not_encodes(people_list, people_count):
-    response = get_page(endpoint + str(people_count) + format_wookiee)
-    person = people_list[1]
-    for parameter in response.keys():
-        field = response[parameter]
-        if type(field) == "string":
-            if field.isdigit():
-                assert field in person.values()
+def test_digit_values_not_encodes(people_list, people_count):
+    person = people_list[0]
+    wookiee_person = get_page(endpoint + "1" + format_wookiee)
+    digit_values = 0
+    values = wookiee_person.values()
+    for value in values:
+        if not isinstance(value, list) and value.isdigit():
+            digit_values += 1
+            assert value in person.values()
+    # to exclude false positive test passing
+    assert digit_values > 0
