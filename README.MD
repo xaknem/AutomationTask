@@ -8,4 +8,4 @@ Run with command:
 
 $ pytest --html=report.html
 
-And open report html with any browser.
+And open report.html with any browser.
