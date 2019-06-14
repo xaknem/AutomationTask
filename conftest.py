@@ -7,9 +7,10 @@ use endpoint with "people" resource because there is no other tests
 endpoint must be "https://swapi.co/api/"
 """
 endpoint = "https://swapi.co/api/people/"
+format_wookiee = "/?format=wookiee"
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="session")
 def people_list():
     people_list = []
     next_url = endpoint
@@ -46,5 +47,6 @@ def search_in_peoples():
 
 def get_page(url):
     response = requests.get(url)
+    assert response.status_code == 200
     json_content = json.loads(response.content.decode('utf-8'))
     return json_content
